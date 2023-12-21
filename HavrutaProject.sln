@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL_Havruta", "DAL_Havruta\DAL_Havruta.csproj", "{1E2045C7-DFE7-448A-9150-EE5AEE8DD0CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL_Havruta", "BL_Havruta\BL_Havruta.csproj", "{DDB0E49C-9A02-44E2-9D96-1CC2F5D064E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO_Havruta", "DTO_Havruta\DTO_Havruta.csproj", "{56548749-772A-4452-9453-3AB0CC2693FB}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E2045C7-DFE7-448A-9150-EE5AEE8DD0CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E2045C7-DFE7-448A-9150-EE5AEE8DD0CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E2045C7-DFE7-448A-9150-EE5AEE8DD0CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E2045C7-DFE7-448A-9150-EE5AEE8DD0CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDB0E49C-9A02-44E2-9D96-1CC2F5D064E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDB0E49C-9A02-44E2-9D96-1CC2F5D064E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDB0E49C-9A02-44E2-9D96-1CC2F5D064E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDB0E49C-9A02-44E2-9D96-1CC2F5D064E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56548749-772A-4452-9453-3AB0CC2693FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56548749-772A-4452-9453-3AB0CC2693FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56548749-772A-4452-9453-3AB0CC2693FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56548749-772A-4452-9453-3AB0CC2693FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

@@ -38,9 +38,9 @@ namespace DAL_Havruta.Objects
             }
         }
 
-        public bool Delete(User user)
+        public bool Delete(User DeleteUser)
         {
-            User userTry = GetById(user.Iduser);
+            User userTry = GetById(DeleteUser.Iduser);
             try
             {
                 if (userTry != null)

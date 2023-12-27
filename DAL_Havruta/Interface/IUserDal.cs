@@ -13,7 +13,7 @@ namespace DAL_Havruta.Interfase
         Model.User Get(string email);
         bool AddNew(Model.User NewUser); 
 
-        bool Delete(User user);    
+        bool Delete(User DeleteUser);    
 
     }
 }

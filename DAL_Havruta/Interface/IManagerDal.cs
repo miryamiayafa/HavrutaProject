@@ -8,6 +8,7 @@ namespace DAL_Havruta.Interfase
     {
         IEnumerable<Manager> GetAll();  
         Manager GetById(int id);   
+        Manager GetByEmail(string email);
         bool Delete(Manager manager);
         bool Update(Manager manager);   
         bool AddNew(Manager manager);   

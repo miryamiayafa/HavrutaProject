@@ -8,7 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Objects\" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DAL_Havruta\DAL_Havruta.csproj" />
+    <ProjectReference Include="..\DTO_Havruta\DTO_Havruta.csproj" />
   </ItemGroup>
 
 </Project>

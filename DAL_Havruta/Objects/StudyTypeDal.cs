@@ -1,8 +1,15 @@
 ﻿using System;
+using DAL_Havruta.Interfase;
+using DAL_Havruta.Model;
 
-public class Class1
+namespace DAL_Havruta.Objects
 {
-	public Class1()
-	{
-	}
+    public class StudyTypeDal : IStudyTypeDal
+    {
+        private readonly DB.HavrutaDbContext context;
+        public StudyTypeDal(DB.HavrutaDbContext _context) 
+         { 
+            this.context = _context;    
+        }   
+    }
 }

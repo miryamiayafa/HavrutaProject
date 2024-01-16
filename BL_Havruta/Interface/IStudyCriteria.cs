@@ -1,8 +1,16 @@
-﻿using System;
+﻿using DAL_Havruta.Model;
+using System;
 
-public class Class1
+namespace BL_Havruta.Interface
 {
-	public Class1()
-	{
-	}
+    public interface IStudyCriteria
+    {
+        IEnumerable<DTO_Havruta.Model.StudyCriterion> GetAll();
+        bool AddNew(DTO_Havruta.Model.StudyCriterion newStudyCriterion);
+        DTO_Havruta.Model.StudyCriterion GetById(int id);
+        bool Delete(DTO_Havruta.Model.StudyCriterion deleteStudyCriterion);
+        bool Update(DTO_Havruta.Model.StudyCriterion updateStudyCriterion);
+
+    }
+
 }

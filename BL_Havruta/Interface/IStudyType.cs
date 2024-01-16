@@ -1,8 +1,17 @@
-﻿using System;
+﻿using DAL_Havruta.Model;
+using System;
 
-public class Class1
+namespace BL_Havruta.Interface
 {
-	public Class1()
-	{
-	}
+    public interface IStudyType
+    {
+        IEnumerable<DTO_Havruta.Model.StudyType> GetAll();
+        bool AddNew(DTO_Havruta.Model.StudyType newStudyType);
+        DTO_Havruta.Model.StudyType GetById(int id);
+        bool Delete(DTO_Havruta.Model.StudyType deleteStudyType);
+        bool Update(DTO_Havruta.Model.StudyType updateStudyType);
+
+    }
+
 }
+

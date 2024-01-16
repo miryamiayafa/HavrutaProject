@@ -1,8 +1,16 @@
-﻿using System;
+﻿using DAL_Havruta.Model;
+using System;
 
-public class Class1
+namespace BL_Havruta.Interface
 {
-	public Class1()
-	{
-	}
+    public interface ISubject
+    {
+        IEnumerable<DTO_Havruta.Model.Subject> GetAll();
+        bool AddNew(DTO_Havruta.Model.Subject newSubject);
+        DTO_Havruta.Model.Subject GetById(int id);
+        bool Delete(DTO_Havruta.Model.Subject deleteSubject);
+        bool Update(DTO_Havruta.Model.Subject updateSubject);
+
+    }
+
 }

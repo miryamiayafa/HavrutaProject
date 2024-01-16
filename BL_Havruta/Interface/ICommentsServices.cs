@@ -3,7 +3,7 @@ using System;
 
 namespace BL_Havruta.Interface
 {
-    public interface IComments
+    public interface ICommentsServices
     {
         IEnumerable<DTO_Havruta.Model.Comment> GetAll();
         bool AddNew(DTO_Havruta.Model.Comment newComment);

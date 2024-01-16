@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BL_Havruta.Interface
 {
-    public interface IUser
+    public interface IUserServices
     {
       IEnumerable<DTO_Havruta.Model.User>GetAll();
         bool AddNew(DTO_Havruta.Model.User newUser);

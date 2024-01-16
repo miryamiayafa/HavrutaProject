@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BL_Havruta.Interface
 {
-    public interface IManager
+    public interface IManagerServices
     {
         IEnumerable<DTO_Havruta.Model.Manager> getAll();
          bool AddNew(DTO_Havruta.Model.Manager manager);    

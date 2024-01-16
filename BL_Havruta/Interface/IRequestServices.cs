@@ -3,7 +3,7 @@ using System;
 
 namespace BL_Havruta.Interface
 {
-    public interface IRequest
+    public interface IRequestServices
     {
         IEnumerable<DTO_Havruta.Model.Request> GetAll();
         bool AddNew(DTO_Havruta.Model.Request newRequest);

@@ -8,31 +8,31 @@ using DTO_Havruta.Model;
 
 namespace BL_Havruta.Objects
 {
-    internal class UserServices : IUserServices
+    public class ManagerServices : IManagerServices
     {
-        public bool AddNew(User newUser)
+        public bool AddNew(Manager manager)
         {
             throw new NotImplementedException();
         }
 
-        public bool Delete(User deleteUser)
+        public bool Delete(Manager deleteManager)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<Manager> getAll()
         {
             throw new NotImplementedException();
         }
 
-        public User GetById(int id)
+        public Manager GetByEmail(string email)
         {
             throw new NotImplementedException();
         }
 
-        public User GetByUser(string emaile)
+        public Manager GetById(int id)
         {
             throw new NotImplementedException();
-        }
+        } 
     }
 }

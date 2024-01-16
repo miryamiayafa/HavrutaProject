@@ -3,7 +3,7 @@ using System;
 
 namespace BL_Havruta.Interface
 {
-    public interface IStudyTime
+    public interface IStudyTimeServices
     {
         IEnumerable<DTO_Havruta.Model.StudyTime> GetAll();
         bool AddNew(DTO_Havruta.Model.StudyTime newStudyTime);

@@ -3,7 +3,7 @@ using System;
 
 namespace BL_Havruta.Interface
 {
-    public interface IStudyCriteria
+    public interface IStudyCriteriaServices
     {
         IEnumerable<DTO_Havruta.Model.StudyCriterion> GetAll();
         bool AddNew(DTO_Havruta.Model.StudyCriterion newStudyCriterion);

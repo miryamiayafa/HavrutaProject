@@ -3,7 +3,7 @@ using System;
 
 namespace BL_Havruta.Interface
 {
-    public interface ISubject
+    public interface ISubjectServices
     {
         IEnumerable<DTO_Havruta.Model.Subject> GetAll();
         bool AddNew(DTO_Havruta.Model.Subject newSubject);

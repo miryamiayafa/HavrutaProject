@@ -8,29 +8,29 @@ using DTO_Havruta.Model;
 
 namespace BL_Havruta.Objects
 {
-    internal class UserServices : IUserServices
+    internal class StudyCriteriaServices : IStudyCriteriaServices
     {
-        public bool AddNew(User newUser)
+        public bool AddNew(StudyCriterion newStudyCriterion)
         {
             throw new NotImplementedException();
         }
 
-        public bool Delete(User deleteUser)
+        public bool Delete(StudyCriterion deleteStudyCriterion)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<StudyCriterion> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public User GetById(int id)
+        public StudyCriterion GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public User GetByUser(string emaile)
+        public bool Update(StudyCriterion updateStudyCriterion)
         {
             throw new NotImplementedException();
         }

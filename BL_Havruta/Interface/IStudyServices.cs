@@ -3,7 +3,7 @@ using System;
 
 namespace BL_Havruta.Interface
 {
-    public interface IStudy
+    public interface IStudyServices
     {
         IEnumerable<DTO_Havruta.Model.Study> GetAll();
         bool AddNew(DTO_Havruta.Model.Study newStudy);

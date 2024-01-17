@@ -12,7 +12,7 @@ namespace BL_Havruta.Interface
       IEnumerable<DTO_Havruta.Model.User>GetAll();
         bool AddNew(DTO_Havruta.Model.User newUser);
         DTO_Havruta.Model.User GetById(int id);
-        DTO_Havruta.Model.User GetByUser(string emaile);
+        DTO_Havruta.Model.User GetByEmail(string emaile);
         bool Delete(DTO_Havruta.Model.User deleteUser);    
 
 

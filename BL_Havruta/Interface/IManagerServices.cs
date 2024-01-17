@@ -10,7 +10,7 @@ namespace BL_Havruta.Interface
 {
     public interface IManagerServices
     {
-        IEnumerable<DTO_Havruta.Model.Manager> getAll();
+        IEnumerable<DTO_Havruta.Model.Manager> GetAll();
          bool AddNew(DTO_Havruta.Model.Manager manager);    
         DTO_Havruta.Model.Manager GetById(int id);
         DTO_Havruta.Model.Manager GetByEmail(string email);

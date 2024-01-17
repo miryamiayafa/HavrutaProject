@@ -10,10 +10,10 @@ namespace DAL_Havruta.Interfase
         IEnumerable<DAL_Havruta.Model.User> GetAll();
         Model.User GetById(int id);
 
-        Model.User Get(string email);
+        Model.User GetByEmail(string email);
         bool AddNew(Model.User NewUser); 
 
-        bool Delete(User DeleteUser);    
+        bool Delete(Model.User DeleteUser);
 
     }
 }

@@ -21,7 +21,7 @@ namespace DAL_Havruta.Objects
         {
             try
             {
-               User tryUserByEmail=Get(u.Email);
+               User tryUserByEmail=GetByEmail(u.Email);
                 
                 if (tryUserByEmail==null)
                     
@@ -55,7 +55,7 @@ namespace DAL_Havruta.Objects
             
         }
 
-        public User Get(string email)
+        public User GetByEmail(string email)
         {
             try
             {

@@ -8,7 +8,7 @@ namespace DAL_Havruta.Interfase
         IEnumerable<Request> GetAll();
         Request GetById(int id);    
         bool Update(Request request);
-        bool Delete(int id);
+        bool Delete(Request request);
         bool AddNew(Request request);
 
 

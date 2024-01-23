@@ -7,9 +7,9 @@ namespace DAL_Havruta.Interfase
     {
         IEnumerable<StudyCriterion> GetAll();
         StudyCriterion GetById(int id);
-        bool AddNew(StudyCriterion AddStudyCriterion); 
-        bool Delete(StudyCriterion DeleteStudyCriterion);   
-        bool Update(StudyCriterion UpdateStudyCriterion);   
+        bool AddNew(StudyCriterion addStudyCriterion); 
+        bool Delete(StudyCriterion deleteStudyCriterion);   
+        bool Update(StudyCriterion updateStudyCriterion);   
 
 
 

@@ -39,11 +39,11 @@ namespace DAL_Havruta.Objects
 
 		public bool Delete(StudyCriterion studyCriteria)
 		{
-            StudyCriterion StudyCriterionTry = GetById(studyCriteria.Idcriterion);
+            StudyCriterion studyCriterionTry = GetById(studyCriteria.Idcriterion);
             try
 			{
-				if (StudyCriterionTry != null)
-					context.StudyCriteria.Remove(StudyCriterionTry);
+				if (studyCriterionTry != null)
+					context.StudyCriteria.Remove(studyCriteria);
 				return true;
 			}
 			catch(Exception ex) 

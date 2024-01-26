@@ -20,25 +20,81 @@ namespace DAL_Havruta.Objects
             this.context = _context;
         }
 
-        public bool AddNew(Comment newFile)
+        public bool AddNew(Comment comment)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (GetById(comment.Idcomment) != null)
+                    return false;
+                context.Comments.Add(comment);
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
         }
 
-        public Comment Get(int id)
+        public bool Delete(Comment comment)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (GetById(comment.Idcomment) == null)
+                    return false;
+                context.Comments.Remove(comment);
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
         }
 
         public IEnumerable<Comment> GetAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return context.Comments.ToList();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
         }
 
-        public bool Remove(int id)
+        public Comment GetById(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return ((Comment)(GetAll().Where(X => X.Idcomment.Equals(id))));
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+        }
+
+        
+
+        public bool Update(Comment comment)
+        {
+            Comment getByIdTry = GetById(comment.Idcomment);
+            try
+            {
+                if (getByIdTry != null)
+                    return false;
+                context.Comments.Update(comment);
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
         }
     }
-
 }

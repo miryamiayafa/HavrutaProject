@@ -1,0 +1,6 @@
+@HavrutaAPI_HostAddress = http://localhost:5126
+
+GET {{HavrutaAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

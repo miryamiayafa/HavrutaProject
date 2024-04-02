@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BL_Havruta", "BL_Havruta\BL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTO_Havruta", "DTO_Havruta\DTO_Havruta.csproj", "{56548749-772A-4452-9453-3AB0CC2693FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HavrutaAPI", "HavrutaAPI\HavrutaAPI.csproj", "{D7102C23-E2F9-4763-B546-538510F8FCAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{56548749-772A-4452-9453-3AB0CC2693FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56548749-772A-4452-9453-3AB0CC2693FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56548749-772A-4452-9453-3AB0CC2693FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7102C23-E2F9-4763-B546-538510F8FCAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7102C23-E2F9-4763-B546-538510F8FCAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7102C23-E2F9-4763-B546-538510F8FCAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7102C23-E2F9-4763-B546-538510F8FCAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

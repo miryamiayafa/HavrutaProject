@@ -10,4 +10,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BL_Havruta\BL_Havruta.csproj" />
+    <ProjectReference Include="..\DAL_Havruta\DAL_Havruta.csproj" />
+    <ProjectReference Include="..\DTO_Havruta\DTO_Havruta.csproj" />
+  </ItemGroup>
+
 </Project>

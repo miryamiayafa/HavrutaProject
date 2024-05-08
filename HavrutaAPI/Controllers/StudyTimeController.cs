@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace HavrutaAPI.Controllers
-{
+namespace HavrutaAPI.Controllers;
+
     [Route("api/[controller]")]
     [ApiController]
     public class StudyTimeController : ControllerBase
@@ -69,4 +69,4 @@ namespace HavrutaAPI.Controllers
             }
         }
     }
-}
+

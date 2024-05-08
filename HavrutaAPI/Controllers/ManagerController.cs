@@ -4,8 +4,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HavrutaAPI.Controllers;
+      
+    [Route("api/[controller]")]
+    [ApiController]
 
-    public class ManagerController : Controller
+public class ManagerController : Controller
     {
         // GET: ManagerController
         private readonly BL_Havruta.Interface.IManagerServices _services;

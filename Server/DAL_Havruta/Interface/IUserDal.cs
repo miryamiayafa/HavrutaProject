@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Data.SqlTypes;
-using DAL_Havruta.Model;
+using DAL_Havruta.Migrations.Model;
 
-namespace DAL_Havruta.Interfase
+namespace DAL_Havruta.Interfase;
+
+public interface IUserDal
 {
-    public interface IUserDal
-    {
-        IEnumerable<DAL_Havruta.Model.User> GetAll();
-        Model.User GetById(int id);
+    IEnumerable<User> GetAll();
+    User GetById(int id);
 
-        Model.User GetByEmail(string email);
-        int AddNew(Model.User NewUser); 
+    User GetByEmail(string email);
+    int AddNew(User NewUser); 
 
-        bool Delete(Model.User DeleteUser);
-        bool IsUserExsit(int id);
-        int Login(string userName, string password);
-    }
+    bool Delete(User DeleteUser);
+    bool IsUserExsit(int id);
+    int Login(string userName, string password);
+    IEnumerable<DTO_Havruta.Model.UserInformation> GetUserSubjectInfo();
 }
 

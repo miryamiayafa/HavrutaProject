@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BL_Havruta.Interface;
 using DAL_Havruta.Interfase;
+using DAL_Havruta.Migrations.Model;
 using DTO_Havruta.Model;
 
 namespace BL_Havruta.Objects
@@ -19,22 +20,22 @@ namespace BL_Havruta.Objects
    
             this.mapper = mapper;
         }
-        public bool AddNew(Study newStudy)
+        public bool AddNew(DTO_Havruta.Model.Study newStudy)
         {
-            return dal.studyDal.AddNew(mapper.Map<DAL_Havruta.Model.Study>(newStudy));
+            return dal.studyDal.AddNew(mapper.Map<DAL_Havruta.Migrations.Model.Study>(newStudy));
         }
 
-        public bool Delete(Study deleteStudy)
+        public bool Delete(DTO_Havruta.Model.Study deleteStudy)
         {
-            return dal.studyDal.Delete(mapper.Map<DAL_Havruta.Model.Study>(deleteStudy));
+            return dal.studyDal.Delete(mapper.Map<DAL_Havruta.Migrations.Model.Study>(deleteStudy));
         }
 
         public IEnumerable<DTO_Havruta.Model.Study> GetAll()
         {
             try
             {
-                IEnumerable<DAL_Havruta.Model.Study> studies = dal.studyDal.GetAll();
-                MapperConfiguration configuration = new MapperConfiguration(mcfg => mcfg.CreateMap<DTO_Havruta.Model.Study, DAL_Havruta.Model.Study>()
+                IEnumerable<DAL_Havruta.Migrations.Model.Study> studies = dal.studyDal.GetAll();
+                MapperConfiguration configuration = new MapperConfiguration(mcfg => mcfg.CreateMap<DTO_Havruta.Model.Study, DAL_Havruta.Migrations.Model.Study>()
                 .ReverseMap());
                 var mapper = configuration.CreateMapper();
                 IEnumerable<DTO_Havruta.Model.Study> studiesList = studies.Select(x => mapper.Map<DTO_Havruta.Model.Study>(x));
@@ -46,16 +47,16 @@ namespace BL_Havruta.Objects
             }
         }
 
-        public Study GetById(int id)
+        public DTO_Havruta.Model.Study GetById(int id)
         {
-            Study getByIdStudyBL;
+            DTO_Havruta.Model.Study getByIdStudyBL;
             getByIdStudyBL = mapper.Map<DTO_Havruta.Model.Study>(dal.studyDal.GetById(id));
             return getByIdStudyBL;
         }
 
-        public bool Update(Study updateStudy)
+        public bool Update(DTO_Havruta.Model.Study updateStudy)
         {
-            return dal.studyDal.Update(mapper.Map<DAL_Havruta.Model.Study>(updateStudy));
+            return dal.studyDal.Update(mapper.Map<DAL_Havruta.Migrations.Model.Study>(updateStudy));
         }
     }
 }

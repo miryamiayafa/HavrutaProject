@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BL_Havruta.Interface;
 using DAL_Havruta.Interfase;
+using DAL_Havruta.Migrations.Model;
 using DTO_Havruta.Model;
 
 namespace BL_Havruta.Objects;
@@ -20,16 +21,16 @@ public class StudyCriteriaServices : IStudyCriteriaServices
         this.mapper = mapper;
      
     }
-    public bool AddNew(StudyCriterion studyCriterion)
+    public bool AddNew(DTO_Havruta.Model.StudyCriterion studyCriterion)
     {
-        return dal.studyCriteriaDal.AddNew(mapper.Map<DAL_Havruta.Model.StudyCriterion>(studyCriterion));    
+        return dal.studyCriteriaDal.AddNew(mapper.Map<DAL_Havruta.Migrations.Model.StudyCriterion>(studyCriterion));    
     }
     public IEnumerable<DTO_Havruta.Model.StudyCriterion> GetAll()
     {
         try
         {
-            IEnumerable<DAL_Havruta.Model.StudyCriterion> studyCriteria = dal.studyCriteriaDal.GetAll();
-            MapperConfiguration configuration = new MapperConfiguration(mcfg => mcfg.CreateMap<DTO_Havruta.Model.StudyCriterion, DAL_Havruta.Model.StudyCriterion>()
+            IEnumerable<DAL_Havruta.Migrations.Model.StudyCriterion> studyCriteria = dal.studyCriteriaDal.GetAll();
+            MapperConfiguration configuration = new MapperConfiguration(mcfg => mcfg.CreateMap<DTO_Havruta.Model.StudyCriterion, DAL_Havruta.Migrations.Model.StudyCriterion>()
             .ReverseMap());
             var mapper = configuration.CreateMapper();
             IEnumerable<DTO_Havruta.Model.StudyCriterion> studyCriteriaList = studyCriteria.Select(x => mapper.Map<DTO_Havruta.Model.StudyCriterion>(x));
@@ -41,20 +42,20 @@ public class StudyCriteriaServices : IStudyCriteriaServices
         }
 
     }
-    public StudyCriterion GetById(int id)
+    public DTO_Havruta.Model.StudyCriterion GetById(int id)
     {
-        StudyCriterion getByIdStudyCriterionBL;
+        DTO_Havruta.Model.StudyCriterion getByIdStudyCriterionBL;
         getByIdStudyCriterionBL = mapper.Map<DTO_Havruta.Model.StudyCriterion>(dal.studyCriteriaDal.GetById(id));
         return getByIdStudyCriterionBL; 
     }
     
-    public bool Delete(StudyCriterion studyCriterion)
+    public bool Delete(DTO_Havruta.Model.StudyCriterion studyCriterion)
     {
-        return dal.studyCriteriaDal.Delete(mapper.Map<DAL_Havruta.Model.StudyCriterion>(studyCriterion));
+        return dal.studyCriteriaDal.Delete(mapper.Map<DAL_Havruta.Migrations.Model.StudyCriterion>(studyCriterion));
     }
 
-    public bool Update(StudyCriterion studyCriterion)
+    public bool Update( DTO_Havruta.Model.StudyCriterion studyCriterion)
     {
-        return dal.studyCriteriaDal.Update(mapper.Map<DAL_Havruta.Model.StudyCriterion>(studyCriterion));
+        return dal.studyCriteriaDal.Update(mapper.Map<DAL_Havruta.Migrations.Model.StudyCriterion>(studyCriterion));
     }
 }

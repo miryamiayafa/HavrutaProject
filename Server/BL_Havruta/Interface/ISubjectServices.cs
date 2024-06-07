@@ -1,4 +1,4 @@
-﻿using DAL_Havruta.Model;
+﻿using DAL_Havruta.Migrations.Model;
 using System;
 
 namespace BL_Havruta.Interface

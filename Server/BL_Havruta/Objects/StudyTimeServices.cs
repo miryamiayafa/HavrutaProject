@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BL_Havruta.Interface;
 using DAL_Havruta.Interfase;
+using DAL_Havruta.Migrations.Model;
 using DTO_Havruta.Model;
 using Microsoft.EntityFrameworkCore.Migrations;
 
@@ -20,22 +21,22 @@ namespace BL_Havruta.Objects
         {
             this.mapper = mapper;
         }
-        public bool AddNew(StudyTime newStudyTime)
+        public bool AddNew(DTO_Havruta.Model.StudyTime newStudyTime)
         {
-            return dal.studyTimeDal.AddNew(mapper.Map<DAL_Havruta.Model.StudyTime>(newStudyTime));
+            return dal.studyTimeDal.AddNew(mapper.Map<DAL_Havruta.Migrations.Model.StudyTime>(newStudyTime));
         }
 
-        public bool Delete(StudyTime deleteStudyTime)
+        public bool Delete(DTO_Havruta.Model.StudyTime deleteStudyTime)
         {
-            return dal.studyTimeDal.Delete(mapper.Map<DAL_Havruta.Model.StudyTime>(deleteStudyTime));
+            return dal.studyTimeDal.Delete(mapper.Map<DAL_Havruta.Migrations.Model.StudyTime>(deleteStudyTime));
         }
 
         public IEnumerable<DTO_Havruta.Model.StudyTime> GetAll()
         {
             try
             {
-                IEnumerable<DAL_Havruta.Model.StudyTime> studyTimes = dal.studyTimeDal.GetAll();
-                MapperConfiguration configuration = new MapperConfiguration(mcfg => mcfg.CreateMap<DTO_Havruta.Model.StudyTime, DAL_Havruta.Model.StudyTime>()
+                IEnumerable<DAL_Havruta.Migrations.Model.StudyTime> studyTimes = dal.studyTimeDal.GetAll();
+                MapperConfiguration configuration = new MapperConfiguration(mcfg => mcfg.CreateMap<DTO_Havruta.Model.StudyTime, DAL_Havruta.Migrations.Model.StudyTime>()
                 .ReverseMap());
                 var mapper = configuration.CreateMapper();
                 IEnumerable<DTO_Havruta.Model.StudyTime> studyTimesList = studyTimes.Select(x => mapper.Map<DTO_Havruta.Model.StudyTime>(x));
@@ -47,9 +48,9 @@ namespace BL_Havruta.Objects
             }
         }
 
-        public StudyTime GetById(int id)
+        public DTO_Havruta.Model.StudyTime GetById(int id)
         {
-            StudyTime getByIdStudyTimeBL;
+            DTO_Havruta.Model.StudyTime getByIdStudyTimeBL;
             getByIdStudyTimeBL = mapper.Map<DTO_Havruta.Model.StudyTime>(dal.studyTimeDal.GetById(id));
             return getByIdStudyTimeBL;  
 
@@ -68,9 +69,9 @@ namespace BL_Havruta.Objects
             }
         }
 
-        public bool Update(StudyTime updateStudyTime)
+        public bool Update(DTO_Havruta.Model.StudyTime updateStudyTime)
         {
-            return dal.studyTimeDal.Update(mapper.Map<DAL_Havruta.Model.StudyTime>(updateStudyTime));    
+            return dal.studyTimeDal.Update(mapper.Map<DAL_Havruta.Migrations.Model.StudyTime>(updateStudyTime));    
         }
     }
 }

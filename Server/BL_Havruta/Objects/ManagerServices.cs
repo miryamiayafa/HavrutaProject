@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BL_Havruta.Interface;
 using DAL_Havruta.Interfase;
+using DAL_Havruta.Migrations.Model;
 using DTO_Havruta.Model;
 
 namespace BL_Havruta.Objects
@@ -20,16 +21,16 @@ namespace BL_Havruta.Objects
             this.mapper = mapper;   
          
         }
-        public bool AddNew(Manager newManager)
+        public bool AddNew(DTO_Havruta.Model.Manager newManager)
         {
-            return dal.ManagerDal.AddNew(mapper.Map<DAL_Havruta.Model.Manager>(newManager));   
+            return dal.ManagerDal.AddNew(mapper.Map<DAL_Havruta.Migrations.Model.Manager>(newManager));   
         }
-        public IEnumerable<Manager> GetAll() 
+        public IEnumerable<DTO_Havruta.Model.Manager> GetAll() 
         {
             try 
             { 
-              IEnumerable<DAL_Havruta.Model.Manager> managers = dal.ManagerDal.GetAll();
-              MapperConfiguration configuration = new MapperConfiguration(mcfg => mcfg.CreateMap<DAL_Havruta.Model.Manager, DTO_Havruta.Model.Manager>()
+              IEnumerable<DAL_Havruta.Migrations.Model.Manager> managers = dal.ManagerDal.GetAll();
+              MapperConfiguration configuration = new MapperConfiguration(mcfg => mcfg.CreateMap<DAL_Havruta.Migrations.Model.Manager, DTO_Havruta.Model.Manager>()
               .ReverseMap());
               var mapper = configuration.CreateMapper();
               IEnumerable<DTO_Havruta.Model.Manager> managerList = managers.Select(x => mapper.Map<DTO_Havruta.Model.Manager>(x));
@@ -40,23 +41,23 @@ namespace BL_Havruta.Objects
                 throw new Exception("   " + ex);
             }
         }
-        public Manager GetById(int id)
+        public DTO_Havruta.Model.Manager GetById(int id)
         {
-            Manager getByIdManagerBL;
+            DTO_Havruta.Model.Manager getByIdManagerBL;
             getByIdManagerBL = mapper.Map < DTO_Havruta.Model.Manager > (dal.ManagerDal.GetById(id));
             return getByIdManagerBL;
 
         }
-        public Manager GetByEmail(string email)
+        public DTO_Havruta.Model.Manager GetByEmail(string email)
         {
-            Manager getByEmailBL;
+            DTO_Havruta.Model.Manager getByEmailBL;
             getByEmailBL = mapper.Map<DTO_Havruta.Model.Manager>(dal.ManagerDal.GetByEmail(email));
             return getByEmailBL;
 
         }
-        public bool Delete(Manager  deleteManager)
+        public bool Delete(DTO_Havruta.Model.Manager  deleteManager)
         {
-            return dal.ManagerDal.Delete(mapper.Map<DAL_Havruta.Model.Manager>(deleteManager));
+            return dal.ManagerDal.Delete(mapper.Map<DAL_Havruta.Migrations.Model.Manager>(deleteManager));
         }
         
     }

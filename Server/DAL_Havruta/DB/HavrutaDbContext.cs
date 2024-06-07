@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using DAL_Havruta.Model;
+using DAL_Havruta.Migrations.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 

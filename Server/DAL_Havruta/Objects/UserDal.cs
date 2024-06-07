@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Reflection.PortableExecutable;
+using System.Collections.Generic;
+using System.Linq;
 using DAL_Havruta.Interfase;
-using DAL_Havruta.Model;
-
-
+using DAL_Havruta.Migrations.Model;
+using DTO_Havruta.Model;
 
 
 namespace DAL_Havruta.Objects
-
 {
     public class UserDal : IUserDal
     {
@@ -18,7 +17,7 @@ namespace DAL_Havruta.Objects
             this.context = _context;
         }
 
-        public int AddNew(User u)
+        public int AddNew(DAL_Havruta.Migrations.Model.User u)
         {
             try
             {
@@ -36,35 +35,35 @@ namespace DAL_Havruta.Objects
                 }
 
             }
-
             catch (Exception ex)
             {
                 throw new Exception(ex.InnerException.Message);
             }
         }
 
-        public bool Delete(User DeleteUser)
+        public bool Delete(DAL_Havruta.Migrations.Model.User DeleteUser)
         {
-            User userTry = GetById(DeleteUser.Iduser);
+            DAL_Havruta.Migrations.Model.User userTry = GetById(DeleteUser.Iduser);
             try
             {
                 if (userTry != null)
+                {
                     context.Remove(userTry);
+                    context.SaveChanges();
+                }
                 return true;
             }
-            catch(Exception ex)// WHEN userTry==NULL I CAN'T DELETE USER.
-            { 
+            catch (Exception ex)// WHEN userTry==NULL I CAN'T DELETE USER.
+            {
                 throw new Exception();
-            }  
-
-            
+            }
         }
 
-        public User GetByEmail(string email)
+        public DAL_Havruta.Migrations.Model.User GetByEmail(string email)
         {
             try
             {
-                return (User)GetAll().Where(x => x.Email == email);
+                return context.Users.FirstOrDefault(x => x.Email == email);
             }
             catch (Exception ex)
             {
@@ -72,7 +71,7 @@ namespace DAL_Havruta.Objects
             }
         }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<DAL_Havruta.Migrations.Model.User> GetAll()
         {
             try
             {
@@ -82,20 +81,18 @@ namespace DAL_Havruta.Objects
             {
                 throw new Exception();
             }
-
         }
 
-
-        public User GetById(int id)
+        public DAL_Havruta.Migrations.Model.User GetById(int id)
         {
-
             try
             {
-                return (User)GetAll().Where(x => x.Iduser == id);
+                return context.Users.FirstOrDefault(x => x.Iduser == id);
             }
-            catch (Exception ex) { }
-
-            throw new NotImplementedException();
+            catch (Exception ex)
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public bool IsUserExsit(int id)
@@ -124,6 +121,32 @@ namespace DAL_Havruta.Objects
             catch (Exception ex)
             {
                 throw new Exception("Couldn't connect to the data base");
+            }
+        }
+
+        public IEnumerable<DTO_Havruta.Model.UserInformation> GetUserSubjectInfo()
+        {
+            try
+            {
+                var query = from user in context.Users
+                            join userSubject in context.UserSubjects on user.Iduser equals userSubject.IdUser
+                            join subject in context.Subjects on userSubject.IdSubject equals subject.Idsubject
+                            select new UserInformation
+                            {
+                                sector = user.Sector,
+                                gender = user.Gender,
+                                descriptionMyStudy = user.DecriptionMyStudy,
+                                fName = user.FName,
+                                age = (int)user.Age,
+                                subject = subject.Subject1,
+                                SubjectDescription = subject.Description
+                            };
+
+                return query.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error retrieving user subject information", ex);
             }
         }
     }

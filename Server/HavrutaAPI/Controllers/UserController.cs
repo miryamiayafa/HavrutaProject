@@ -8,12 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System;
 using System.Collections.Generic;
+using DAL_Havruta.Migrations.Model;
 
 namespace HavrutaAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class UserController : ControllerBase
+public class UserController  : ControllerBase
 {
    private readonly BL_Havruta.Interface.IBL  _services = BL_Havruta.Objects.BL.Instance;  
     public UserController()
@@ -79,7 +80,7 @@ public class UserController : ControllerBase
     /// </summary>
     /// <param name="id">The user id</param>
     /// <returns>[new messages number, today events number]</returns>
-    [HttpGet("id")]
+    [HttpGet("GetTheNumberOfAlerts")]
     public IActionResult GetTheNumberOfAlerts(int id)
     {
         try
@@ -91,6 +92,8 @@ public class UserController : ControllerBase
                 List<int> result = new List<int>();
                 result.Add(_services.RequestServices.GetNumberOfRequestForUser(id));
                 result.Add(_services.StudyTimeServices.GetTheNuberOfTodayStudyForUser(id));
+
+                //IBl =>  BL.Instance
 
                 return Ok(result);
             }
@@ -121,4 +124,31 @@ public class UserController : ControllerBase
         }
 
     }
+    [HttpPost("UserInformation")]
+    public IActionResult UserInformation()
+    {
+        try
+        {
+            var userInfo = _services.userServices.GetUserSubjectInfo();
+            if (userInfo == null)
+            {
+                // רישום במקרה של null
+                Console.WriteLine("No user information found.");
+                return NotFound("No user information found.");
+            }
+
+            // רישום של הנתונים שהתקבלו
+            Console.WriteLine("User information retrieved successfully.");
+            Console.WriteLine(userInfo);
+
+            return Ok(userInfo);
+        }
+        catch (Exception ex)
+        {
+            // רישום במקרה של שגיאה
+            Console.WriteLine($"An error occurred: {ex.Message}");
+            return StatusCode(500, "Internal server error");
+        }
+    }
+
 }

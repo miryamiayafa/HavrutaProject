@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace DAL_Havruta.Model;
+namespace DAL_Havruta.Migrations.Model;
 
 public partial class Study
 {

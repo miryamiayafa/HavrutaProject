@@ -1,7 +1,7 @@
 ﻿using System;
-using DAL_Havruta.Model;
 using DAL_Havruta.Interfase;
 using System.Runtime.CompilerServices;
+using DAL_Havruta.Migrations.Model;
 
 namespace DAL_Havruta.Objects
 {

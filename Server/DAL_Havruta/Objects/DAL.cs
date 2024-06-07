@@ -1,6 +1,6 @@
 ﻿using DAL_Havruta.Interface;
 using DAL_Havruta.Interfase;
-using DAL_Havruta.Model;
+using DAL_Havruta.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;

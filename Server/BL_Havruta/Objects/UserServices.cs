@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using BL_Havruta.Interface;
 using DAL_Havruta.Interfase;
+using DAL_Havruta.Migrations;
+using DAL_Havruta.Migrations.Model;
+using DAL_Havruta.Objects;
 using DTO_Havruta.Model;
 using System;
 using System.Collections.Generic;
@@ -20,11 +23,11 @@ namespace BL_Havruta.Objects
 
             this.mapper = mapper;
         }   
-        public int AddNew( User newUser)
+        public int AddNew(DTO_Havruta.Model.User newUser)
         {
             try
             {
-                return dal.UserDal.AddNew(mapper.Map<DAL_Havruta.Model.User>(newUser));
+                return dal.UserDal.AddNew(mapper.Map<DAL_Havruta.Migrations.Model.User>(newUser));
             }
             catch(Exception ex)
             {
@@ -34,17 +37,17 @@ namespace BL_Havruta.Objects
 
         }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<DTO_Havruta.Model.User> GetAll()
         {
             try
             {
-                IEnumerable<DAL_Havruta.Model.User> users = dal.UserDal.GetAll();
+                IEnumerable<DAL_Havruta.Migrations.Model.User> users = dal.UserDal.GetAll();
 
-                MapperConfiguration configuration = new MapperConfiguration(mcfg => mcfg.CreateMap<DTO_Havruta.Model.User, DAL_Havruta.Model.User>()
+                MapperConfiguration configuration = new MapperConfiguration(mcfg => mcfg.CreateMap<DTO_Havruta.Model.User, DAL_Havruta.Migrations.Model.User>()
                 .ReverseMap());
                 var mapper = configuration.CreateMapper();
                 IEnumerable<DTO_Havruta.Model.User> userList = users.Select(x => mapper.Map<DTO_Havruta.Model.User>(x));
-                return userList;
+                return  userList;
             }
             catch (Exception ex) 
             {
@@ -52,24 +55,24 @@ namespace BL_Havruta.Objects
             }
         }
 
-        public User GetById(int id)
+        public DTO_Havruta.Model.User GetById(int id)
         {
-           User GetByIdUserBL;
+            DTO_Havruta.Model.User GetByIdUserBL;
            GetByIdUserBL = mapper.Map<DTO_Havruta.Model.User>(dal.UserDal.GetById(id));
            return GetByIdUserBL;    
         }
 
-        public User GetByEmail(string email)
+        public DTO_Havruta.Model.User GetByEmail(string email)
         {
-            User GetByEmailUserBL;
+            DTO_Havruta.Model.User GetByEmailUserBL;
             GetByEmailUserBL = mapper.Map<DTO_Havruta.Model.User>(dal.UserDal.GetByEmail(email));
             return GetByEmailUserBL;
 
         }
 
-        public bool Delete(User deleteUser)
+        public bool Delete(DTO_Havruta.Model.User deleteUser)
         {
-            return dal.UserDal.Delete(mapper.Map<DAL_Havruta.Model.User>(deleteUser));
+            return dal.UserDal.Delete(mapper.Map<DAL_Havruta.Migrations.Model.User>(deleteUser));
         }
 
         public bool IsExist(int id)
@@ -94,6 +97,22 @@ namespace BL_Havruta.Objects
             {
                 throw ex;
             }
+
         }
+
+        public IEnumerable<DTO_Havruta.Model.UserInformation> GetUserSubjectInfo() 
+        {
+            try 
+            {
+                return dal.UserDal.GetUserSubjectInfo();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        
+        }
+
+       
     }
 }

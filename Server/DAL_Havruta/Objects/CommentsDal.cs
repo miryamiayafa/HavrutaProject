@@ -1,5 +1,4 @@
 ﻿using DAL_Havruta.DB;
-using DAL_Havruta.Model;
 using System;
 using System.Linq;
 using DAL_Havruta.Interfase;
@@ -7,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using DAL_Havruta.Migrations.Model;
 
 namespace DAL_Havruta.Objects
 

@@ -1,11 +1,11 @@
 ﻿using System;
-using DAL_Havruta.Model;
 using DAL_Havruta.Interfase;
+using DAL_Havruta.Migrations.Model;
 
 
 namespace DAL_Havruta.Objects
 {
-	public class StudyCriteria : IStudyCriteriaDal
+    public class StudyCriteria : IStudyCriteriaDal
 	{
 		private readonly DB.HavrutaDbContext context;
 

@@ -50,8 +50,8 @@ public partial class HavrutaDbContext : DbContext
             entity.HasKey(e => e.Idcomment);
 
             entity.Property(e => e.Idcomment)
-                .ValueGeneratedNever()
                 .HasColumnName("IDComment");
+            entity.Property(e => e.Idcomment).ValueGeneratedOnAdd();
             entity.Property(e => e.Comment1)
                 .HasMaxLength(300)
                 .HasColumnName("comment");
@@ -74,8 +74,8 @@ public partial class HavrutaDbContext : DbContext
             entity.ToTable("Manager");
 
             entity.Property(e => e.Idmanager)
-                .ValueGeneratedNever()
                 .HasColumnName("IDManager");
+            entity.Property(e => e.Idmanager).ValueGeneratedOnAdd();
             entity.Property(e => e.Email)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -100,8 +100,8 @@ public partial class HavrutaDbContext : DbContext
             entity.ToTable("Request");
 
             entity.Property(e => e.Idrequest)
-                .ValueGeneratedNever()
                 .HasColumnName("IDRequest");
+            entity.Property(e => e.Idrequest).ValueGeneratedOnAdd();
             entity.Property(e => e.AllDay).HasColumnName("allDay");
             entity.Property(e => e.DescriptionRequest).HasMaxLength(300);
             entity.Property(e => e.EndTime).HasColumnName("endTime");
@@ -132,8 +132,8 @@ public partial class HavrutaDbContext : DbContext
             entity.ToTable("Study");
 
             entity.Property(e => e.Idstudy)
-                .ValueGeneratedNever()
                 .HasColumnName("IDStudy");
+            entity.Property(e => e.Idstudy).ValueGeneratedOnAdd();
             entity.Property(e => e.EndTime)
                 .HasColumnType("datetime")
                 .HasColumnName("endTime");
@@ -152,8 +152,8 @@ public partial class HavrutaDbContext : DbContext
             entity.HasKey(e => e.Idcriterion);
 
             entity.Property(e => e.Idcriterion)
-                .ValueGeneratedNever()
                 .HasColumnName("IDCriterion");
+            entity.Property(e => e.Idcriterion).ValueGeneratedOnAdd();
             entity.Property(e => e.IdUser).HasColumnName("idUser");
             entity.Property(e => e.MaxAge).HasColumnName("maxAge");
             entity.Property(e => e.MinAge).HasColumnName("minAge");
@@ -173,8 +173,8 @@ public partial class HavrutaDbContext : DbContext
             entity.ToTable("StudyTime");
 
             entity.Property(e => e.Idtime)
-                .ValueGeneratedNever()
                 .HasColumnName("IDTime");
+            entity.Property(e => e.Idtime).ValueGeneratedOnAdd();
             entity.Property(e => e.AllDay).HasColumnName("allDay");
             entity.Property(e => e.Day).HasColumnName("day");
             entity.Property(e => e.EndTime)
@@ -210,8 +210,8 @@ public partial class HavrutaDbContext : DbContext
             entity.ToTable("Subject-");
 
             entity.Property(e => e.Idsubject)
-                .ValueGeneratedNever()
                 .HasColumnName("IDSubject");
+            entity.Property(e => e.Idsubject).ValueGeneratedOnAdd();
             entity.Property(e => e.Description)
                 .HasMaxLength(300)
                 .HasColumnName("description");
@@ -228,8 +228,9 @@ public partial class HavrutaDbContext : DbContext
 
             entity.Property(e => e.Iduser)
                 .HasColumnName("IDUser");
-                //.ValueGeneratedOnAdd()
-                //.HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            entity.Property(e => e.Iduser).ValueGeneratedOnAdd();
+            //.ValueGeneratedOnAdd()
+            //.HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             entity.Property(e => e.Address)
                 .HasMaxLength(50)
@@ -266,8 +267,8 @@ public partial class HavrutaDbContext : DbContext
             entity.ToTable("UserStudyType");
 
             entity.Property(e => e.IduserStudyType)
-                .ValueGeneratedNever()
                 .HasColumnName("IDUserStudyType");
+            entity.Property(e => e.IduserStudyType).ValueGeneratedOnAdd();
             entity.Property(e => e.IdStudyType).HasColumnName("idStudyType");
             entity.Property(e => e.IdUser).HasColumnName("idUser");
 
@@ -282,23 +283,16 @@ public partial class HavrutaDbContext : DbContext
 
         modelBuilder.Entity<UserSubject>(entity =>
         {
-            entity.HasKey(e => e.IduserSubject);
+            entity.HasKey(e => e.IDUserSubject);
 
             entity.ToTable("UserSubject");
 
-            entity.Property(e => e.IduserSubject)
-                .ValueGeneratedNever()
+            entity.Property(e => e.IDUserSubject)
                 .HasColumnName("IDUserSubject");
+            entity.Property(e => e.IDUserSubject).ValueGeneratedOnAdd();
             entity.Property(e => e.IdSubject).HasColumnName("idSubject");
             entity.Property(e => e.IdUser).HasColumnName("idUser");
 
-            entity.HasOne(d => d.IdSubjectNavigation).WithMany(p => p.UserSubjects)
-                .HasForeignKey(d => d.IdSubject)
-                .HasConstraintName("FK_UserSubject_Subject-");
-
-            //entity.HasOne(d => d.IdUserNavigation).WithMany(p => p.UserSubjects)
-            //    .HasForeignKey(d => d.IdUser)
-            //    .HasConstraintName("FK_UserSubject_User");
         });
 
         OnModelCreatingPartial(modelBuilder);

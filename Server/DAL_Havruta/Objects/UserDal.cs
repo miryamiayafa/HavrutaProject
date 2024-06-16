@@ -79,7 +79,9 @@ namespace DAL_Havruta.Objects
             }
             catch (Exception ex)
             {
-                throw new Exception();
+                // רישום השגיאה ביומן הלוגים והצגת הודעה מתאימה
+                Console.WriteLine("Error occurred while fetching users: " + ex.Message);
+                throw new Exception("Sorry, can't load the users", ex);
             }
         }
 
@@ -128,10 +130,19 @@ namespace DAL_Havruta.Objects
         {
             try
             {
-                var query = from user in context.Users
-                            join userSubject in context.UserSubjects on user.Iduser equals userSubject.IdUser
-                            join subject in context.Subjects on userSubject.IdSubject equals subject.Idsubject
-                            select new UserInformation
+                var users = context.Users.ToList();
+                var userSubjects = context.UserSubjects.ToList();
+                var subjects = context.Subjects.ToList();
+
+                // בדיקות לוגים
+                //Console.WriteLine("Users count: " + users.Count);
+                //Console.WriteLine("UserSubjects count: " + userSubjects.Count);
+                //Console.WriteLine("Subjects count: " + subjects.Count);
+
+                var query = from user in users
+                            join userSubject in userSubjects on user.Iduser equals userSubject.IdUser
+                            join subject in subjects on userSubject.IdSubject equals subject.Idsubject
+                            select new DTO_Havruta.Model.UserInformation
                             {
                                 sector = user.Sector,
                                 gender = user.Gender,
@@ -142,12 +153,17 @@ namespace DAL_Havruta.Objects
                                 SubjectDescription = subject.Description
                             };
 
-                return query.ToList();
+                var result = query.ToList();
+                //Console.WriteLine("Query result count: " + result.Count);
+
+                return result;
             }
             catch (Exception ex)
             {
                 throw new Exception("Error retrieving user subject information", ex);
             }
         }
+
+
     }
 }

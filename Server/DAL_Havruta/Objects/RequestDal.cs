@@ -20,6 +20,7 @@ namespace DAL_Havruta.Objects
                 if (request != null)
                 {
                     context.Requests.Add(request);
+                    context.SaveChanges();
                 }
 
                 return true;
@@ -105,7 +106,7 @@ namespace DAL_Havruta.Objects
         {
             try
             {
-                return context.Requests.Where(r => r.IdAcceptingRequest == userId && r.Ok == null).Count();
+                return context.Requests.Where(r => r.IdAcceptingRequest == userId && (r.Ok == null || r.Ok == false)).Count();
             }
             catch (Exception ex)
             {
@@ -113,6 +114,19 @@ namespace DAL_Havruta.Objects
                 throw new Exception("Couldn't get the data");
             }
             
+        }
+        public IEnumerable<Request> RequestsForIdAcceptingRequest(int IdAcceptingRequest)
+        {
+            try
+            {
+                return context.Requests.Where(r => r.IdAcceptingRequest == IdAcceptingRequest && (r.Ok == null || r.Ok == false));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception("Couldn't get the data");
+            }
+
         }
     }
 }

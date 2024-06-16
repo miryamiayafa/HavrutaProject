@@ -6,6 +6,7 @@ namespace DAL_Havruta.Interfase
     public interface IRequestDal
     {
         IEnumerable<Request> GetAll();
+        public IEnumerable<Request> RequestsForIdAcceptingRequest(int IdAcceptingRequest);
         Request GetById(int id);    
         bool Update(Request request);
         bool Delete(Request request);

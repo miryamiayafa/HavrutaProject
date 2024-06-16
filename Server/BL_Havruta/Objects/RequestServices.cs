@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Azure.Core;
 using BL_Havruta.Interface;
 using DAL_Havruta.Interfase;
 using DAL_Havruta.Migrations.Model;
@@ -70,6 +71,25 @@ namespace BL_Havruta.Objects
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message );
+                throw ex;
+            }
+        
+        }
+
+        public IEnumerable<DTO_Havruta.Model.Request> GetRequestsForIdAcceptingRequest(int IdAcceptingRequest)
+        {
+            try
+            {
+                var requests = dal.RequestDal.RequestsForIdAcceptingRequest(IdAcceptingRequest);
+                MapperConfiguration configuration = new MapperConfiguration(mcfg => mcfg.CreateMap<DAL_Havruta.Migrations.Model.Request, DTO_Havruta.Model.Request>()
+                .ReverseMap());
+                var mapper = configuration.CreateMapper();
+                IEnumerable<DTO_Havruta.Model.Request> requestsList = requests.Select(x => mapper.Map<DTO_Havruta.Model.Request>(x));
+                return requestsList;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
                 throw ex;
             }
         }

@@ -115,7 +115,7 @@ public class UserController  : ControllerBase
         {
             int id = _services.userServices.Login(loginUser);
             if (id == -1)
-                return Ok(false);
+                return BadRequest();
             return Ok(id);
         }
         catch (Exception ex)
@@ -124,7 +124,7 @@ public class UserController  : ControllerBase
         }
 
     }
-    [HttpPost("UserInformation")]
+    [HttpGet("UserInformation")]
     public IActionResult UserInformation()
     {
         try

@@ -9,10 +9,13 @@ namespace HavrutaAPI.Controllers;
     [ApiController]
     public class RequestController : ControllerBase
     {
-        private readonly BL_Havruta.Interface.IRequestServices _services;
-        public RequestController(IRequestServices services)
+        //private readonly BL_Havruta.Interface.IRequestServices _services ;
+    private readonly BL_Havruta.Interface.IBL _services = BL_Havruta.Objects.BL.Instance;
+    
+    //private readonly BL_Havruta.Interface.IBL _services = BL_Havruta.Objects.BL.Instance;
+    public RequestController()
         {
-            _services = services;
+           // _services = services;
         }
 
 
@@ -20,35 +23,42 @@ namespace HavrutaAPI.Controllers;
         [EnableCors("AllowAllOrigins")]
         public IEnumerable<DTO_Havruta.Model.Request> Get()
         {
-            return _services.GetAll();
+            return _services.RequestServices.GetAll();
         }
 
         [HttpGet("{id}")]
         [EnableCors("AllowAllOrigins")]
         public DTO_Havruta.Model.Request GetRequest(int id)
         {
-            return _services.GetById(id);
+            return _services.RequestServices.GetById(id);
         }
-        
 
-        // POST api/<StudyController>
-        [HttpPost]
-        public void Post(DTO_Havruta.Model.Request request)
+    [HttpGet("IdAcceptingRequest/{IdAcceptingRequest}")]
+    public IEnumerable<DTO_Havruta.Model.Request> GetRequestsForIdAcceptingRequest(int IdAcceptingRequest)
+    {
+       return _services.RequestServices.GetRequestsForIdAcceptingRequest(IdAcceptingRequest);
+    }
+
+
+    // POST api/<StudyController>
+    [HttpPost("AddNewRequest")]
+        public void AddNewRequest(DTO_Havruta.Model.Request request)
         {
-            _services.AddNew(request);
+            _services.RequestServices.AddNew(request);
         }
+
         [HttpPut("Edit")]
         public void Edit(int id, [FromBody] DTO_Havruta.Model.Request request)
         {
-            _services.AddNew(request);
-            _services.Delete(request);
+            _services.RequestServices.AddNew(request);
+            _services.RequestServices.Delete(request);
         }
 
         // DELETE api/<UserController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            _services.Delete(GetRequest(id));
+            _services.RequestServices.Delete(GetRequest(id));
         }
         [HttpPut("UpdateRequest")]
         public DTO_Havruta.Model.Request UpdateRequest(int id, [FromBody] DTO_Havruta.Model.Request request)
@@ -56,7 +66,7 @@ namespace HavrutaAPI.Controllers;
             try
             {
 
-                DTO_Havruta.Model.Request OldRequest = _services.GetById(id);
+                DTO_Havruta.Model.Request OldRequest = _services.RequestServices.GetById(id);
                 if (OldRequest != request)
                 {
                     OldRequest = request;

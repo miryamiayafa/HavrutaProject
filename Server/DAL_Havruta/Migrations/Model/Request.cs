@@ -7,8 +7,8 @@ namespace DAL_Havruta.Migrations.Model;
 
 public partial class Request
 {
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    //[Key]
+    //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Idrequest { get; set; }
 
     public int? IdAsking { get; set; }
@@ -29,7 +29,7 @@ public partial class Request
 
     public bool? Ok { get; set; }
 
-    public virtual User? IdAskingNavigation { get; set; }
+    //public virtual User? IdAskingNavigation { get; set; }   //IdAskingNavigationIduser
 
     public virtual StudyType? IdStudyTypeNavigation { get; set; }
 
